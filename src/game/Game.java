@@ -4,22 +4,22 @@ import city.cs.engine.*;
 
 import javax.swing.JFrame;
 
-/**
- * A world with some bodies.
- */
 public class Game {
 
-    /** The World in which the bodies move and interact. */
-    private GameWorld world;
+    private GameLevel world;
 
-    /** A graphical display of the world (EnemiesCollision specialised JPanel). */
     private UserView view;
 
-    /** Initialise EnemiesCollision new Game. */
+    private int level;
+
+    private KeyboardInput keyboardInput;
     public Game() {
 
         // make the world
-        world = new GameWorld();
+        level = 1;
+
+        world = new Level2();
+        world.populate(this);
 
         // make EnemiesCollision view
         view = new StartView(world, 500, 500);
@@ -43,14 +43,12 @@ public class Game {
         frame.setVisible(true);
         frame.requestFocus();
 
-        frame.addKeyListener(new KeyboardInput(world.getPlayer()));
+        keyboardInput = new KeyboardInput(world.getPlayer());
+        frame.addKeyListener(keyboardInput);
         // uncomment this to make EnemiesCollision debugging view
         //JFrame debugView = new DebugViewer(world, 500, 500);
 
         world.setGravity(0);
-
-
-
 
         // start!
         world.start();
@@ -60,6 +58,20 @@ public class Game {
     public static void main(String[] args) {
 
         new Game();
+    }
+
+    public void goNextLevel() {
+        if (level == 3) {
+            System.exit(0);
+        } else {
+            level++;
+
+            world = new Level2();
+
+            world.populate(this);
+
+            keyboardInput.setPlayer(world.getPlayer());
+        }
     }
 
     public UserView getView() {

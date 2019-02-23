@@ -30,12 +30,12 @@ public class PlayerCollision implements CollisionListener {
         }
     }
 
-    public void safeCollision () {
+    private void safeCollision () {
         spaceship.setAngularVelocity(0);
         spaceship.setAngle(0);
     }
 
-    public void collision () {
+    private void collision () {
         spaceship.decreaseHealth();
         spaceship.death();
         spaceship.setAngularVelocity(0);

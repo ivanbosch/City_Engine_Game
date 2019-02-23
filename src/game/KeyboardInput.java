@@ -66,4 +66,8 @@ public class KeyboardInput extends KeyAdapter {
         player.removeAllImages();
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
 }

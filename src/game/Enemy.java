@@ -9,7 +9,7 @@ public class Enemy extends Walker {
 
     private static float WALKING_SPEED = -5;
 
-    public Enemy(GameWorld world, int health){
+    public Enemy(World world, int health){
         super(world, enemyShape);
         addImage(enemyImage);
         this.health = health;
@@ -20,6 +20,7 @@ public class Enemy extends Walker {
     public static float getWalkingSpeed() {
         return WALKING_SPEED;
     }
+
     public static void setWalkingSpeed(float walkingSpeed) {
         WALKING_SPEED = walkingSpeed;
     }

@@ -13,14 +13,16 @@ public class Player extends DynamicBody implements IdleImageInterface {
     private static final float angularVelocity = 0;
     private Timer timer;
     private IdleImageTask idleImageTask;
+    private int killCount;
 
-    public Player(GameWorld world, int health){
+    public Player(World world, int health){
         super(world, playerShape);
         this.addImage(playerImage);
         this.health = health;
         this.timer = world.getTimer();
         this.startIdleImage();
         this.setAngularVelocity(angularVelocity);
+        killCount = 0;
     }
 
     public void startIdleImage() {
@@ -45,5 +47,13 @@ public class Player extends DynamicBody implements IdleImageInterface {
         if (health == 0) {
             this.destroy();
         }
+    }
+
+    public int getCount() {
+        return killCount;
+    }
+
+    public void addOne() {
+        killCount++;
     }
 }

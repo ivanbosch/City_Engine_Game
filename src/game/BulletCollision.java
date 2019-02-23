@@ -9,6 +9,7 @@ public class BulletCollision implements CollisionListener {
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Bullet) {
             e.getOtherBody().destroy();
+
         }
         e.getReportingBody().destroy();
     }
