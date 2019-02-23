@@ -15,7 +15,7 @@ public class Player extends DynamicBody implements IdleImageInterface {
     private IdleImageTask idleImageTask;
     private int killCount;
 
-    public Player(World world, int health){
+    public Player(GameLevel world, int health){
         super(world, playerShape);
         this.addImage(playerImage);
         this.health = health;

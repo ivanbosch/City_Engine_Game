@@ -5,16 +5,16 @@ import org.jbox2d.common.Vec2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level2 extends GameLevel {
+public class Level3 extends GameLevel {
     private List<Enemy> enemies = new ArrayList<>();
-    private static final int ENEMIES_KILLED = 3;
+    private static final int ENEMIES_KILLED = 5;
 
     @Override
     public void populate(Game game) {
         super.populate(game);
 
         //make enemies
-        for (int i = 1; i <4; i++) {
+        for (int i = 1; i <6; i++) {
             Enemy enemy = new Enemy(this, 3);
             enemy.setPosition(new Vec2(i*3-9, 6+i*2));
             //we do get player because we dont declare a new player here

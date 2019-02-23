@@ -18,7 +18,7 @@ public class Game {
         // make the world
         level = 1;
 
-        world = new Level2();
+        world = new Level1();
         world.populate(this);
 
         // make EnemiesCollision view
@@ -54,23 +54,45 @@ public class Game {
         world.start();
     }
 
-    /** Run the game. */
-    public static void main(String[] args) {
-
-        new Game();
+    public boolean isCurrentLevelCompleted() {
+        return world.isCompleted();
     }
 
-    public void goNextLevel() {
-        if (level == 3) {
-            System.exit(0);
-        } else {
-            level++;
+    public void goLevel2() {
+        world.stop();
+        if (level == 1){
+            setLevel(2);
 
             world = new Level2();
 
             world.populate(this);
 
             keyboardInput.setPlayer(world.getPlayer());
+
+            view.setWorld(world);
+
+            world.setGravity(0);
+
+            world.start();
+        }
+    }
+
+    public void goLevel3() {
+        world.stop();
+        if (level == 1){
+            setLevel(3);
+
+            world = new Level3();
+
+            world.populate(this);
+
+            keyboardInput.setPlayer(world.getPlayer());
+
+            view.setWorld(world);
+
+            world.setGravity(0);
+
+            world.start();
         }
     }
 
@@ -81,4 +103,15 @@ public class Game {
     public World getWorld() {
         return world;
     }
+
+    public void setLevel(int i) {
+        level = i;
+    }
+
+    /** Run the game. */
+    public static void main(String[] args) {
+
+        new Game();
+    }
+
 }
