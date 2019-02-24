@@ -9,12 +9,10 @@ import java.awt.event.KeyEvent;
 public class KeyboardInput extends KeyAdapter {
     private static final float WALKING_SPEED = 9.0f;
     private Player player;
-    private World world;
 
 
     public KeyboardInput(Player player) {
         this.player = player;
-        this.world = player.getWorld();
     }
 
     @Override
@@ -29,13 +27,11 @@ public class KeyboardInput extends KeyAdapter {
         } else if (code == KeyEvent.VK_D) {
             this.moveBody(WALKING_SPEED,0); //move right
         } else if (code == KeyEvent.VK_M) {
-            Bullet bullet = new Bullet(world);
+            Bullet bullet = new Bullet(player.getWorld());
             bullet.setPosition(new Vec2(player.getPosition().x,player.getPosition().y+1.5f));
             bullet.setLinearVelocity(new Vec2(0,20));
             }
         }
-
-
 
     private void moveBody(float speedX, float speedY) {
         player.stopIdleImage();
@@ -43,7 +39,6 @@ public class KeyboardInput extends KeyAdapter {
         player.removeAllImages();
         player.addImage(new BodyImage("data/Spaceship_Assets/Spaceship3.png",2));
     }
-
 
     @Override
     public void keyReleased(KeyEvent e) {

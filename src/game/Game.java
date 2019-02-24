@@ -67,11 +67,11 @@ public class Game {
 
             world.populate(this);
 
-            keyboardInput.setPlayer(world.getPlayer());
-
             view.setWorld(world);
 
             world.setGravity(0);
+
+            keyboardInput.setPlayer(world.getPlayer());
 
             world.start();
         }
@@ -86,11 +86,11 @@ public class Game {
 
             world.populate(this);
 
-            keyboardInput.setPlayer(world.getPlayer());
-
             view.setWorld(world);
 
             world.setGravity(0);
+
+            keyboardInput.setPlayer(world.getPlayer());
 
             world.start();
         }

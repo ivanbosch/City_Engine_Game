@@ -18,6 +18,8 @@ public class EnemiesCollision implements CollisionListener {
 
         else if (e.getOtherBody() instanceof Bullet) {
             enemy.destroy();
+            Level2 level2 = (Level2)enemy.getWorld();
+            level2.getEnemies().remove(enemy);
             e.getOtherBody().destroy();
         }
     }
