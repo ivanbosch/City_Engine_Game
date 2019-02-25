@@ -16,21 +16,25 @@ public class Level3 extends GameLevel {
         //make enemies
         for (int i = 1; i <6; i++) {
             Enemy enemy = new Enemy(this, 3);
-            enemy.setPosition(new Vec2(i*3-9, 6+i*2));
+            enemy.setPosition(new Vec2(i*3-9, 4+i*2));
             //we do get player because we dont declare a new player here
             enemy.move(new Vec2(getPlayer().getPosition().x, getPlayer().getPosition().y));
-            enemy.addCollisionListener(new EnemiesCollision(enemy));
+            enemy.addCollisionListener(new EnemiesCollision(enemy, game));
             enemies.add(enemy);
         }
         this.addStepListener(new MovementListener(this,enemies,getPlayer()));
     }
 
     @Override
-    public Vec2 startPosition() {
+    public Vec2 playerStartPosition() {
         return new Vec2(0,0);
     }
 
     @Override
+    public Vec2 enemyStartPosition() {
+        return new Vec2(3-9,6-12);
+    }
+
     public boolean isCompleted() {
         return getPlayer().getCount() >= ENEMIES_KILLED;
     }

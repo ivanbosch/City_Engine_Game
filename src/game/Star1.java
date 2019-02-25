@@ -25,7 +25,7 @@ public class Star1 extends DynamicBody {
     public void star1Death() {
         if (health == 0) {
             this.destroy();
-            game.goLevel2();
+            game.goNextLevel(2);
         }
 
     }

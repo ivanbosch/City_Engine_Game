@@ -8,12 +8,14 @@ public class Star2 extends DynamicBody {
     private int health;
     private static final Shape circleShape = new CircleShape(3);
     private static final BodyImage starImage = new BodyImage("data/stars/star_orange01.png", 9);
+    private Game game;
 
-    public Star2(World world, int health, int x, int y) {
+    public Star2(World world, int health, int x, int y, Game game) {
         super(world, circleShape);
         this.addImage(starImage);
         this.health = health;
         this.setPosition(new Vec2(x,y));
+        this.game = game;
     }
 
     public void decreaseStarHealth() {
@@ -23,6 +25,7 @@ public class Star2 extends DynamicBody {
     public void star2Death() {
         if (health == 0) {
             this.destroy();
+            game.goNextLevel(3);
         }
     }
 }

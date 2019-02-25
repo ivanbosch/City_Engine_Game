@@ -23,11 +23,11 @@ public class Level1 extends GameLevel {
         star1.addCollisionListener(new Star1Collision(star1));
         //after broken go to level 1, it happens in the collision listener?
 
-        star2 = new Star2(this,5,0,9);
+        star2 = new Star2(this,5,0,9, game);
         star2.addCollisionListener(new Star2Collision(star2));
         //after broken go to level 2
 
-        star3 = new Star3(this,5,8,9);
+        star3 = new Star3(this,5,8,9, game);
         star3.addCollisionListener(new Star3Collision(star3));
         //after broken go to level 3
 
@@ -35,8 +35,13 @@ public class Level1 extends GameLevel {
 
 
     @Override
-    public Vec2 startPosition() {
+    public Vec2 playerStartPosition() {
         return new Vec2(0,0);
+    }
+
+    @Override
+    public Vec2 enemyStartPosition() {
+        return new Vec2(3-9,6-12);
     }
 
     @Override

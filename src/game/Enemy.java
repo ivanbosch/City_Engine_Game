@@ -1,5 +1,7 @@
 package game;
 import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
+
 import java.util.Timer;
 
 public class Enemy extends Walker {
@@ -23,6 +25,16 @@ public class Enemy extends Walker {
 
     public static void setWalkingSpeed(float walkingSpeed) {
         WALKING_SPEED = walkingSpeed;
+    }
+
+    public void decreaseHealth() {
+        health--;
+        this.setLinearVelocity(new Vec2(WALKING_SPEED,0));
+        System.out.println(this.getHealth());
+    }
+
+    public int getHealth() {
+        return health;
     }
 }
 

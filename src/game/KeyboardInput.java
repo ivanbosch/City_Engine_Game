@@ -26,12 +26,8 @@ public class KeyboardInput extends KeyAdapter {
             this.moveBody(-WALKING_SPEED,0); //move left
         } else if (code == KeyEvent.VK_D) {
             this.moveBody(WALKING_SPEED,0); //move right
-        } else if (code == KeyEvent.VK_M) {
-            Bullet bullet = new Bullet(player.getWorld());
-            bullet.setPosition(new Vec2(player.getPosition().x,player.getPosition().y+1.5f));
-            bullet.setLinearVelocity(new Vec2(0,20));
-            }
         }
+    }
 
     private void moveBody(float speedX, float speedY) {
         player.stopIdleImage();
@@ -51,7 +47,12 @@ public class KeyboardInput extends KeyAdapter {
             this.stopBody(player.getLinearVelocity().x,0);
         } else if (code == KeyEvent.VK_S) {
             this.stopBody(player.getLinearVelocity().x,0);
+        } else if (code == KeyEvent.VK_M) {
+            Bullet bullet = new Bullet(player.getWorld());
+            bullet.setPosition(new Vec2(player.getPosition().x,player.getPosition().y+1.5f));
+            bullet.setLinearVelocity(new Vec2(0,20));
         }
+
     }
 
     //Stop moving method used in key releases to stop the body

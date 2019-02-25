@@ -18,14 +18,12 @@ public class Game {
         // make the world
         level = 1;
 
+        //start on level1
         world = new Level1();
         world.populate(this);
 
-        // make EnemiesCollision view
+        //make view
         view = new StartView(world, 500, 500);
-
-        // uncomment this to draw EnemiesCollision 1-metre grid over the view
-        // view.setGridResolution(1);
 
         // display the view in EnemiesCollision frame
         final JFrame frame = new JFrame("Stardust Crusaders");
@@ -58,42 +56,43 @@ public class Game {
         return world.isCompleted();
     }
 
-    public void goLevel2() {
+    public void goNextLevel(int i) {
         world.stop();
-        if (level == 1){
-            setLevel(2);
+        if (level == 1 && i == 2) {
+            setLevel(i);
 
             world = new Level2();
 
-            world.populate(this);
-
-            view.setWorld(world);
-
-            world.setGravity(0);
-
-            keyboardInput.setPlayer(world.getPlayer());
-
-            world.start();
+            levelPopulation();
         }
-    }
 
-    public void goLevel3() {
-        world.stop();
-        if (level == 1){
-            setLevel(3);
+        if (level == 1 && i == 3){
+            setLevel(i);
 
             world = new Level3();
 
-            world.populate(this);
-
-            view.setWorld(world);
-
-            world.setGravity(0);
-
-            keyboardInput.setPlayer(world.getPlayer());
-
-            world.start();
+            levelPopulation();
         }
+
+        if (level == 1 && i == 4){
+            setLevel(i);
+
+            world = new Level4();
+
+            levelPopulation();
+        }
+    }
+
+    public void goLevel1() {
+        world.stop();
+
+        setLevel(1);
+
+        view.setWorld(world);
+
+        keyboardInput.setPlayer(world.getPlayer());
+
+        world.start();
     }
 
     public UserView getView() {
@@ -106,6 +105,30 @@ public class Game {
 
     public void setLevel(int i) {
         level = i;
+    }
+
+    public boolean isCurrentLevel2(World world) {
+        return true;
+    }
+
+    public boolean isCurrentLevel3(World world) {
+        return true;
+    }
+
+    public boolean isCurrentLevel4(World world) {
+        return true;
+    }
+
+    public void levelPopulation() {
+        world.populate(this);
+
+        view.setWorld(world);
+
+        world.setGravity(0);
+
+        keyboardInput.setPlayer(world.getPlayer());
+
+        world.start();
     }
 
     /** Run the game. */
