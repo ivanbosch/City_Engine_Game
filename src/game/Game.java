@@ -107,16 +107,8 @@ public class Game {
         level = i;
     }
 
-    public boolean isCurrentLevel2(World world) {
-        return true;
-    }
-
-    public boolean isCurrentLevel3(World world) {
-        return true;
-    }
-
-    public boolean isCurrentLevel4(World world) {
-        return true;
+    public int getLevel() {
+        return level;
     }
 
     public void levelPopulation() {

@@ -41,7 +41,7 @@ public class Level1 extends GameLevel {
 
     @Override
     public Vec2 enemyStartPosition() {
-        return new Vec2(3-9,6-12);
+        return new Vec2(0,0);
     }
 
     @Override

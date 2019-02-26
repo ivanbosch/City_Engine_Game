@@ -15,7 +15,7 @@ public class Level2 extends GameLevel {
 
         //make enemies
         for (int i = 1; i <4; i++) {
-            Enemy enemy = new Enemy(this, 4);
+            Enemy enemy = new Enemy(this, 1);
             enemy.setPosition(enemyStartPosition());
             //we do get player because we dont declare a new player here
             enemy.move(new Vec2(getPlayer().getPosition().x, getPlayer().getPosition().y));
