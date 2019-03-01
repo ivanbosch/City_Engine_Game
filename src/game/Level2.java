@@ -1,7 +1,9 @@
 package game;
 
+import city.cs.engine.SoundClip;
 import org.jbox2d.common.Vec2;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,10 +15,12 @@ public class Level2 extends GameLevel {
     public void populate(Game game) {
         super.populate(game);
 
+        game.playBattleMusic();
+
         //make enemies
         for (int i = 1; i <4; i++) {
             Enemy enemy = new Enemy(this, 1);
-            enemy.setPosition(enemyStartPosition());
+            enemy.setPosition(new Vec2(i*-3, 8+(i*2)));
             //we do get player because we dont declare a new player here
             enemy.move(new Vec2(getPlayer().getPosition().x, getPlayer().getPosition().y));
             enemy.addCollisionListener(new EnemiesCollision(enemy, game));
@@ -27,12 +31,7 @@ public class Level2 extends GameLevel {
 
     @Override
     public Vec2 playerStartPosition() {
-        return new Vec2(0,0);
-    }
-
-    @Override
-    public Vec2 enemyStartPosition() {
-        return new Vec2(3-9,0-8);
+        return new Vec2(0,-5);
     }
 
     @Override
@@ -43,4 +42,5 @@ public class Level2 extends GameLevel {
     public List<Enemy> getEnemies() {
         return enemies;
     }
+
 }

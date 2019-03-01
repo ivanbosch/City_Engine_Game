@@ -1,9 +1,7 @@
 package game;
 
 import city.cs.engine.World;
-
 import org.jbox2d.common.Vec2;
-
 import java.util.Timer;
 
 public abstract class GameLevel extends World {
@@ -30,8 +28,7 @@ public abstract class GameLevel extends World {
 
     public abstract Vec2 playerStartPosition();
 
-    public abstract Vec2 enemyStartPosition();
-
     public abstract boolean isCompleted();
+
 
 }

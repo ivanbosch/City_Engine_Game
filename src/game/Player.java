@@ -34,10 +34,6 @@ public class Player extends DynamicBody implements IdleImageInterface {
         this.idleImageTask.cancel();
     }
 
-    public int getHealth() {
-        return health;
-    }
-
     public void decreaseHealth () {
         health--;
         System.out.println("Focus improve, you still have " + health + " lives");
@@ -46,6 +42,7 @@ public class Player extends DynamicBody implements IdleImageInterface {
     public void death () {
         if (health == 0) {
             this.destroy();
+
         }
     }
 

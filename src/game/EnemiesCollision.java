@@ -26,14 +26,26 @@ public class EnemiesCollision implements CollisionListener {
                 if (game.getLevel() == 2) {
                     Level2 level2 = (Level2) enemy.getWorld();
                     level2.getEnemies().remove(enemy);
+                    if (level2.getEnemies().isEmpty()) {
+                        game.goLevel1();
+                        System.out.println("level finished");
+                    }
                 }
                 else if (game.getLevel() == 3) {
                     Level3 level3 = (Level3) enemy.getWorld();
                     level3.getEnemies().remove(enemy);
+                    if (level3.getEnemies().isEmpty()) {
+                        game.goLevel1();
+                        System.out.println("level finished");
+                    }
                 }
                 else if (game.getLevel() == 4) {
                     Level4 level4 = (Level4) enemy.getWorld();
                     level4.getEnemies().remove(enemy);
+                    if (level4.getEnemies().isEmpty()) {
+                        game.goLevel1();
+                        System.out.println("level finished");
+                    }
                 }
             }
 

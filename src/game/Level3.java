@@ -13,10 +13,12 @@ public class Level3 extends GameLevel {
     public void populate(Game game) {
         super.populate(game);
 
+        game.playBattleMusic();
+
         //make enemies
         for (int i = 1; i <6; i++) {
             Enemy enemy = new Enemy(this, 3);
-            enemy.setPosition(new Vec2(i*3-9, 4+i*2));
+            enemy.setPosition(new Vec2(-8+(3*i), 4+(i*2)));
             //we do get player because we dont declare a new player here
             enemy.move(new Vec2(getPlayer().getPosition().x, getPlayer().getPosition().y));
             enemy.addCollisionListener(new EnemiesCollision(enemy, game));
@@ -27,12 +29,7 @@ public class Level3 extends GameLevel {
 
     @Override
     public Vec2 playerStartPosition() {
-        return new Vec2(0,0);
-    }
-
-    @Override
-    public Vec2 enemyStartPosition() {
-        return new Vec2(3-9,6-12);
+        return new Vec2(0,-5);
     }
 
     public boolean isCompleted() {

@@ -25,9 +25,9 @@ public class MovementListener implements StepListener {
     @Override
     public void postStep (StepEvent e) {
         for (Enemy enemy : enemies) {
-            if (enemy.getPosition().x > 8) {
+            if (enemy.getPosition().x > 11) {
                 enemy.startWalking(enemy.getWalkingSpeed());
-            } else if (enemy.getPosition().x < -8) {
+            } else if (enemy.getPosition().x < -11) {
                 enemy.startWalking(-enemy.getWalkingSpeed());
             }
 
