@@ -21,7 +21,7 @@ public abstract class GameLevel extends World {
     }
 
     public void populate(Game game) {
-        spaceship = new Player(this , 3);
+        spaceship = new Player(this , 3, game);
         spaceship.setPosition(playerStartPosition());
         spaceship.addCollisionListener(new PlayerCollision(spaceship));
     }

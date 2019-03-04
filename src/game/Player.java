@@ -2,6 +2,9 @@ package game;
 
 import city.cs.engine.*;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.IOException;
 import java.util.Timer;
 
 
@@ -13,16 +16,27 @@ public class Player extends DynamicBody implements IdleImageInterface {
     private static final float angularVelocity = 0;
     private Timer timer;
     private IdleImageTask idleImageTask;
+    private static SoundClip deathScream;
     private int killCount;
+    private Game game;
 
-    public Player(GameLevel world, int health){
+    public Player(GameLevel world, int health, Game game){
         super(world, playerShape);
         this.addImage(playerImage);
+        this.game = game;
         this.health = health;
         this.timer = world.getTimer();
         this.startIdleImage();
         this.setAngularVelocity(angularVelocity);
         killCount = 0;
+    }
+
+    static {
+        try {
+            deathScream = new SoundClip("data/SpaceMusicPack/fx/scream.wav");
+        } catch (UnsupportedAudioFileException| IOException| LineUnavailableException e) {
+            System.out.println(e);
+        }
     }
 
     public void startIdleImage() {
@@ -34,6 +48,10 @@ public class Player extends DynamicBody implements IdleImageInterface {
         this.idleImageTask.cancel();
     }
 
+    public int getHealth() {
+        return health;
+    }
+
     public void decreaseHealth () {
         health--;
         System.out.println("Focus improve, you still have " + health + " lives");
@@ -42,7 +60,8 @@ public class Player extends DynamicBody implements IdleImageInterface {
     public void death () {
         if (health == 0) {
             this.destroy();
-
+            deathScream.play();
+            game.goLevel1();
         }
     }
 

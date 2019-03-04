@@ -5,6 +5,7 @@ import city.cs.engine.*;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JFrame;
+import java.awt.*;
 import java.io.IOException;
 
 public class Game {
@@ -21,6 +22,7 @@ public class Game {
     private SoundClip loadingMusic;
     private SoundClip winMusic;
     private boolean isBattleMusic;
+    private boolean isWinMusic;
 
     private boolean isLoadingMusic;
 
@@ -34,7 +36,7 @@ public class Game {
         world.populate(this);
 
         //make view
-        view = new StartView(world, 500, 500);
+        view = new MyView(world, 500, 500, this);
 
         // display the view in EnemiesCollision frame
         final JFrame frame = new JFrame("Stardust Crusaders");
@@ -54,6 +56,8 @@ public class Game {
 
         keyboardInput = new KeyboardInput(world.getPlayer());
         frame.addKeyListener(keyboardInput);
+        ControlPanel buttons = new ControlPanel();
+        frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
         // uncomment this to make EnemiesCollision debugging view
         //JFrame debugView = new DebugViewer(world, 500, 500);
 
@@ -95,14 +99,14 @@ public class Game {
 
     public void goLevel1() {
 
-        if (level == 2) {
-            setLevel2WasCompleted(true);
-        }
-        else if (level == 3) {
-            setLevel3WasCompleted(true);
-        }
-        else if (level == 4) {
-            setLevel4WasCompleted(true);
+        if(world.getPlayer().getHealth() != 0) {
+            if (level == 2) {
+                setLevel2WasCompleted(true);
+            } else if (level == 3) {
+                setLevel3WasCompleted(true);
+            } else if (level == 4) {
+                setLevel4WasCompleted(true);
+            }
         }
 
         world.stop();
@@ -118,7 +122,7 @@ public class Game {
         return view;
     }
 
-    public World getWorld() {
+    public GameLevel getWorld() {
         return world;
     }
 
@@ -174,7 +178,7 @@ public class Game {
         try {
             battleMusic = new SoundClip("data/SpaceMusicPack/battle.wav");
             battleMusic.loop();
-            battleMusic.setVolume(1);
+            battleMusic.setVolume(0.1);
         } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 System.out.println(e);
         }
@@ -187,6 +191,7 @@ public class Game {
             try {
                 gameMusic = new SoundClip("data/SpaceMusicPack/in-the-wreckage.wav");
                 gameMusic.loop();
+                gameMusic.setVolume(0.4);
             } catch (UnsupportedAudioFileException| IOException| LineUnavailableException e) {
                 System.out.println(e);
             }
@@ -204,9 +209,11 @@ public class Game {
 
     public void playWinningMusic() {
             loadingMusic.stop();
+            setWinMusic(true);
             try {
                 winMusic = new SoundClip("data/SpaceMusicPack/meet-the-princess.wav");
                 winMusic.loop();
+                winMusic.setVolume(0.4);
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 System.out.println(e);
             }
@@ -218,6 +225,14 @@ public class Game {
 
     public void setLoadingMusic(boolean loadingMusic) {
         isLoadingMusic = loadingMusic;
+    }
+
+    public void setWinMusic (boolean winMusic) {
+        isWinMusic = winMusic;
+    }
+
+    public boolean isWinMusic() {
+        return isWinMusic;
     }
 
     /** Run the game. */
