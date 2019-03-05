@@ -2,9 +2,10 @@ package game;
 
 import city.cs.engine.*;
 
+import javax.sound.sampled.Control;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
@@ -44,24 +45,26 @@ public class Game {
         // quit the application when the game window is closed
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationByPlatform(true);
-        // display the world in the window
         frame.add(view);
-        // don't let the game window be resized
         frame.setResizable(false);
-        // size the game window to fit the world view
         frame.pack();
-        // make the window visible
+//
+//        ControlPanel buttons = new ControlPanel(this);
+//        frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
+
         frame.setVisible(true);
+
         frame.requestFocus();
 
         keyboardInput = new KeyboardInput(world.getPlayer());
         frame.addKeyListener(keyboardInput);
-        ControlPanel buttons = new ControlPanel();
-        frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
-        // uncomment this to make EnemiesCollision debugging view
-        //JFrame debugView = new DebugViewer(world, 500, 500);
+
+
 
         world.setGravity(0);
+
+        // uncomment this to make EnemiesCollision debugging view
+        //JFrame debugView = new DebugViewer(world, 500, 500);
 
         // start!
         world.start();
@@ -213,7 +216,7 @@ public class Game {
             try {
                 winMusic = new SoundClip("data/SpaceMusicPack/meet-the-princess.wav");
                 winMusic.loop();
-                winMusic.setVolume(0.4);
+                winMusic.setVolume(0.3);
             } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
                 System.out.println(e);
             }

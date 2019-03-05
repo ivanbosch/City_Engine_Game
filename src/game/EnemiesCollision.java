@@ -23,6 +23,7 @@ public class EnemiesCollision implements CollisionListener {
 
             if (enemy.getHealth() == 0) {
                 enemy.destroy();
+                game.getWorld().getPlayer().addOne();
                 if (game.getLevel() == 2) {
                     Level2 level2 = (Level2) enemy.getWorld();
                     level2.getEnemies().remove(enemy);

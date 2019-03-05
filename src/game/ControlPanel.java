@@ -1,25 +1,52 @@
 package game;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControlPanel {
+public class ControlPanel extends Container {
+    private JPanel controlPanel;
     private JButton pauseButton;
-    private JPanel panel1;
     private JButton quitButton;
     private JButton restartButton;
+    private Game game;
 
-    public ControlPanel() {
+    private boolean pause;
+
+    public ControlPanel(Game game) {
+        this.game = game;
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (pause == false) {
+                    game.getWorld().stop();
+                    setPause(true);
+                } else {
+                    game.getWorld().start();
+                    setPause(false);
+                }
+            }
+        });
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
             }
         });
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                game.goLevel1();
+            }
+        });
     }
 
     public JPanel getMainPanel() {
-        return panel1;
+        return controlPanel;
+    }
+
+    public void setPause(boolean pause) {
+        this.pause = pause;
     }
 }

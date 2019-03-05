@@ -11,6 +11,7 @@ public class MyView extends UserView {
     private Image backgroundLevel2;
     private Image backgroundLevel3;
     private Image backgroundLevel4;
+    private Image healthIcon;
     private Game game;
     final Font font = new Font("TimesRoman",Font.PLAIN,30);
 
@@ -20,6 +21,7 @@ public class MyView extends UserView {
         backgroundLevel2 = new ImageIcon("data/nebula/nebula01.png").getImage();
         backgroundLevel3 = new ImageIcon("data/nebula/nebula04.png").getImage();
         backgroundLevel4 = new ImageIcon("data/nebula/nebula05.png").getImage();
+        healthIcon = new ImageIcon("data/Spaceship_Assets/Spaceship1.png").getImage();
         this.game = game;
     }
 
@@ -42,11 +44,16 @@ public class MyView extends UserView {
     @Override
     protected void paintForeground (Graphics2D g) {
         g.setColor(Color.red);
-        g.drawString("Lives: " + game.getWorld().getPlayer().getHealth(), 10,20);
+        g.drawString("Score: " + 100*game.getWorld().getPlayer().getCount(), 10,20);
+
         if (game.isWinMusic() == true) {
             g.setFont(font);
             g.setColor(Color.lightGray);
-            g.drawString("YOU WON", getWidth()/2,getHeight()/2);
+            g.drawString("YOU WON", getWidth()/2-70,getHeight()/2);
+        }
+
+        for (int i = 0; i < game.getWorld().getPlayer().getHealth(); i++) {
+            g.drawImage(healthIcon,10*i,440, 30,30,this);
         }
     }
 }
