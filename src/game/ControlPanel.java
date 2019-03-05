@@ -16,6 +16,7 @@ public class ControlPanel extends Container {
 
     public ControlPanel(Game game) {
         this.game = game;
+        controlPanel.setFocusable(false);
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,7 +38,7 @@ public class ControlPanel extends Container {
         restartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                game.goLevel1();
+                game.restart();
             }
         });
     }

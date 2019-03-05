@@ -59,7 +59,6 @@ public class KeyboardInput extends KeyAdapter {
         } else if (code == KeyEvent.VK_W) {
             this.stopBody(player.getLinearVelocity().x,0);
         } else if (code == KeyEvent.VK_S) {
-            System.out.println("s");
             this.stopBody(player.getLinearVelocity().x,0);
         } else if (code == KeyEvent.VK_M && player.getHealth() != 0) {
             Bullet bullet = new Bullet(player.getWorld());
@@ -67,7 +66,6 @@ public class KeyboardInput extends KeyAdapter {
             playerShoot.setVolume(0.2);
             bullet.setPosition(new Vec2(player.getPosition().x,player.getPosition().y+1.5f));
             bullet.setLinearVelocity(new Vec2(0,20));
-            System.out.println(player.getHealth());
         }
     }
 

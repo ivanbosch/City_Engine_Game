@@ -48,17 +48,16 @@ public class Game {
         frame.add(view);
         frame.setResizable(false);
         frame.pack();
-//
-//        ControlPanel buttons = new ControlPanel(this);
-//        frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
 
+        ControlPanel buttons = new ControlPanel(this);
+        frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
         frame.setVisible(true);
 
-        frame.requestFocus();
 
         keyboardInput = new KeyboardInput(world.getPlayer());
         frame.addKeyListener(keyboardInput);
 
+        frame.requestFocus();
 
 
         world.setGravity(0);
@@ -119,7 +118,19 @@ public class Game {
         world = new Level1();
 
         levelPopulation();
+
     }
+
+    public void restart() {
+        world.stop();
+
+        setLevel(1);
+
+        world = new Level1();
+
+        levelPopulation();
+    }
+
 
     public UserView getView() {
         return view;
