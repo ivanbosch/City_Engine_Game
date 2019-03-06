@@ -1,6 +1,7 @@
 package game;
 
 import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
 
 import javax.sound.sampled.Control;
 import javax.sound.sampled.LineUnavailableException;
@@ -24,7 +25,6 @@ public class Game {
     private SoundClip winMusic;
     private boolean isBattleMusic;
     private boolean isWinMusic;
-
     private boolean isLoadingMusic;
 
     public Game() {
@@ -49,7 +49,7 @@ public class Game {
         frame.setResizable(false);
         frame.pack();
 
-        ControlPanel buttons = new ControlPanel(this);
+        MainPanel buttons = new MainPanel(this);
         frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
         frame.setVisible(true);
 
@@ -122,13 +122,17 @@ public class Game {
     }
 
     public void restart() {
-        world.stop();
+        if (level != 1) {
+            world.stop();
 
-        setLevel(1);
+            setLevel(1);
 
-        world = new Level1();
+            world = new Level1();
 
-        levelPopulation();
+            levelPopulation();
+        } else {
+            getWorld().getPlayer().setPosition(new Vec2(0,0));
+        }
     }
 
 

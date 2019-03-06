@@ -20,13 +20,7 @@ public class ControlPanel extends Container {
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (pause == false) {
-                    game.getWorld().stop();
-                    setPause(true);
-                } else {
-                    game.getWorld().start();
-                    setPause(false);
-                }
+
             }
         });
         quitButton.addActionListener(new ActionListener() {
