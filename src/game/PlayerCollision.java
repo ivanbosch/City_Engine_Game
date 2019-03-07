@@ -20,6 +20,7 @@ public class PlayerCollision implements CollisionListener {
         }
         else if (e.getOtherBody() instanceof EnemyBullet) {
             collision();
+            System.out.println(game.getData().getHealth());
         }
         else if (e.getOtherBody() instanceof Star1) {
             safeCollision();
@@ -42,6 +43,5 @@ public class PlayerCollision implements CollisionListener {
         spaceship.death();
         spaceship.setAngularVelocity(0);
         spaceship.setAngle(0);
-        game.getData().setHealth(game.getData().getHealth()-1);
     }
 }

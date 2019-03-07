@@ -35,7 +35,7 @@ public class Game {
 
         //start on level1
         world = new Level1();
-        world.populate(this);
+        world.populate(this,3);
 
         data = new PlayerData(world.getPlayer());
         data.setHealth(3);
@@ -104,7 +104,7 @@ public class Game {
 
     public void goLevel1() {
 
-        if(world.getPlayer().getHealth() != 0) {
+        if(data.getHealth() > 0) {
             if (level == 2) {
                 setLevel2WasCompleted(true);
                 data.setScore(data.getScore() + world.getPlayer().getCount());
@@ -118,6 +118,9 @@ public class Game {
                 data.setScore(data.getScore() + world.getPlayer().getCount());
                 data.setHealth(world.getPlayer().getHealth());
             }
+        } else {
+            data.setScore(0);
+            data.setHealth(3);
         }
 
         world.stop();
@@ -132,6 +135,8 @@ public class Game {
 
     public void restart() {
         if (level != 1) {
+            data.setHealth(3);
+
             world.stop();
 
             setLevel(1);
@@ -157,7 +162,7 @@ public class Game {
     }
 
     public void levelPopulation() {
-        world.populate(this);
+        world.populate(this, data.getHealth());
 
         view.setWorld(world);
 

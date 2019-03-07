@@ -10,8 +10,8 @@ public class Level3 extends GameLevel {
     private static final int ENEMIES_KILLED = 5;
 
     @Override
-    public void populate(Game game) {
-        super.populate(game);
+    public void populate(Game game, int playerHealth) {
+        super.populate(game, playerHealth);
 
         game.playBattleMusic();
 

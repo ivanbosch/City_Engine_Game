@@ -54,7 +54,7 @@ public class MyView extends UserView {
             g.drawString("YOU WON", getWidth()/2-70,getHeight()/2);
         }
 
-        for (int i = 0; i < game.getWorld().getPlayer().getHealth(); i++) {
+        for (int i = 0; i < game.getData().getHealth(); i++) {
             g.drawImage(healthIcon,10*i,440, 30,30,this);
         }
     }

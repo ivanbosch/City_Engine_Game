@@ -20,8 +20,8 @@ public abstract class GameLevel extends World {
         return timer;
     }
 
-    public void populate(Game game) {
-        spaceship = new Player(this , 3, game);
+    public void populate(Game game, int playerHealth) {
+        spaceship = new Player(this , playerHealth, game);
         spaceship.setPosition(playerStartPosition());
         spaceship.addCollisionListener(new PlayerCollision(spaceship, game));
     }

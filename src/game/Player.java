@@ -54,11 +54,12 @@ public class Player extends DynamicBody implements IdleImageInterface {
 
     public void decreaseHealth () {
         health--;
-        System.out.println("Focus improve, you still have " + health + " lives");
+        game.getData().setHealth(game.getData().getHealth()-1);
+        System.out.println("Focus improve, you still have " + game.getData().getHealth() + " lives");
     }
 
     public void death () {
-        if (health == 0) {
+        if (game.getData().getHealth() == 0) {
             this.destroy();
             deathScream.play();
             game.goLevel1();

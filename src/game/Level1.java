@@ -12,8 +12,8 @@ public class Level1 extends GameLevel {
 
 
     @Override
-    public void populate(Game game) {
-
+    public void populate(Game game, int playerHealth) {
+        super.populate(game, playerHealth);
 
         game.playInitialMusic();
 
