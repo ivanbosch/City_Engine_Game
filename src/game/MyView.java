@@ -43,8 +43,10 @@ public class MyView extends UserView {
 
     @Override
     protected void paintForeground (Graphics2D g) {
+
         g.setColor(Color.red);
-        g.drawString("Score: " + 100*game.getWorld().getPlayer().getCount(), 10,20);
+        g.drawString("Level Score: " + game.getWorld().getPlayer().getCount(), 10,20);
+        g.drawString("Total Score: " + game.getData().getScore(), 10, 32);
 
         if (game.isWinMusic() == true) {
             g.setFont(font);

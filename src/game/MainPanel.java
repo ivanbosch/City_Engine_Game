@@ -21,6 +21,7 @@ public class MainPanel extends Container {
 
         mainPanel = new JPanel();
 
+        mainPanel.setBackground(Color.black);
         pauseButton = new JButton("Pause");
         pauseButton.addActionListener(new ActionListener() {
             @Override
@@ -51,22 +52,23 @@ public class MainPanel extends Container {
             }
         });
 
-        mainPanel.add(pauseButton);
-        mainPanel.add(restartButton);
-        mainPanel.add(quitButton);
+        paintButton(pauseButton);
+        paintButton(restartButton);
+        paintButton(quitButton);
 
-        unFocus(false);
+        mainPanel.setFocusable(false);
+    }
+
+    public void paintButton(JButton button) {
+        button.setBackground(Color.black);
+        button.setBorderPainted(false);
+        button.setForeground(Color.lightGray);
+        button.setFocusable(false);
+        mainPanel.add(button);
     }
 
     public void setPause(boolean pause) {
         this.pause = pause;
-    }
-
-    public void unFocus(boolean f) {
-        mainPanel.setFocusable(f);
-        pauseButton.setFocusable(f);
-        quitButton.setFocusable(f);
-        restartButton.setFocusable(f);
     }
 
     public JPanel getMainPanel() {

@@ -66,7 +66,7 @@ public class Player extends DynamicBody implements IdleImageInterface {
     }
 
     public int getCount() {
-        return killCount;
+        return 100*killCount;
     }
 
     public void addOne() {

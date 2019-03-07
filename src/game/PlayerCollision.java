@@ -5,9 +5,11 @@ import city.cs.engine.CollisionListener;
 
 public class PlayerCollision implements CollisionListener {
     private Player spaceship;
+    private Game game;
 
-    public PlayerCollision(Player spaceship) {
+    public PlayerCollision(Player spaceship, Game game) {
         this.spaceship = spaceship;
+        this.game = game;
     }
 
     @Override
@@ -40,5 +42,6 @@ public class PlayerCollision implements CollisionListener {
         spaceship.death();
         spaceship.setAngularVelocity(0);
         spaceship.setAngle(0);
+        game.getData().setHealth(game.getData().getHealth()-1);
     }
 }

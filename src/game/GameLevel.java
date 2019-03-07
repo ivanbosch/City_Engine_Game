@@ -23,12 +23,10 @@ public abstract class GameLevel extends World {
     public void populate(Game game) {
         spaceship = new Player(this , 3, game);
         spaceship.setPosition(playerStartPosition());
-        spaceship.addCollisionListener(new PlayerCollision(spaceship));
+        spaceship.addCollisionListener(new PlayerCollision(spaceship, game));
     }
 
     public abstract Vec2 playerStartPosition();
 
     public abstract boolean isCompleted();
-
-
 }

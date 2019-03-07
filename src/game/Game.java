@@ -26,15 +26,19 @@ public class Game {
     private boolean isBattleMusic;
     private boolean isWinMusic;
     private boolean isLoadingMusic;
+    private PlayerData data;
 
     public Game() {
-
         // make the world
+
         level = 1;
 
         //start on level1
         world = new Level1();
         world.populate(this);
+
+        data = new PlayerData(world.getPlayer());
+        data.setHealth(3);
 
         //make view
         view = new MyView(world, 500, 500, this);
@@ -51,14 +55,13 @@ public class Game {
 
         MainPanel buttons = new MainPanel(this);
         frame.add(buttons.getMainPanel(), BorderLayout.SOUTH);
-        frame.setVisible(true);
 
+        frame.setVisible(true);
 
         keyboardInput = new KeyboardInput(world.getPlayer());
         frame.addKeyListener(keyboardInput);
 
         frame.requestFocus();
-
 
         world.setGravity(0);
 
@@ -104,10 +107,16 @@ public class Game {
         if(world.getPlayer().getHealth() != 0) {
             if (level == 2) {
                 setLevel2WasCompleted(true);
+                data.setScore(data.getScore() + world.getPlayer().getCount());
+                data.setHealth(world.getPlayer().getHealth());
             } else if (level == 3) {
                 setLevel3WasCompleted(true);
+                data.setScore(data.getScore() + world.getPlayer().getCount());
+                data.setHealth(world.getPlayer().getHealth());
             } else if (level == 4) {
                 setLevel4WasCompleted(true);
+                data.setScore(data.getScore() + world.getPlayer().getCount());
+                data.setHealth(world.getPlayer().getHealth());
             }
         }
 
@@ -133,11 +142,6 @@ public class Game {
         } else {
             getWorld().getPlayer().setPosition(new Vec2(0,0));
         }
-    }
-
-
-    public UserView getView() {
-        return view;
     }
 
     public GameLevel getWorld() {
@@ -251,6 +255,10 @@ public class Game {
 
     public boolean isWinMusic() {
         return isWinMusic;
+    }
+
+    public PlayerData getData() {
+        return data;
     }
 
     /** Run the game. */

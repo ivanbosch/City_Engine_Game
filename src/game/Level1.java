@@ -3,10 +3,6 @@ package game;
 import city.cs.engine.SoundClip;
 import org.jbox2d.common.Vec2;
 
-import java.io.IOException;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
-
 public class Level1 extends GameLevel {
     private Star1 star1;
     private Star2 star2;
@@ -17,7 +13,7 @@ public class Level1 extends GameLevel {
 
     @Override
     public void populate(Game game) {
-        super.populate(game);
+
 
         game.playInitialMusic();
 
