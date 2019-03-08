@@ -44,7 +44,7 @@ public class MainPanel extends Container {
             }
         });
 
-        restartButton = new JButton("Restart");
+        restartButton = new JButton("Back to Galaxy");
         restartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

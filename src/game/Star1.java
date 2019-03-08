@@ -29,4 +29,8 @@ public class Star1 extends DynamicBody {
         }
 
     }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }

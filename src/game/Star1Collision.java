@@ -14,17 +14,18 @@ public class Star1Collision implements CollisionListener {
     @Override
     public void collide (CollisionEvent e) {
         if (e.getOtherBody() instanceof Bullet) {
+            star1.decreaseStarHealth();
             collision();
             e.getOtherBody().destroy();
         } else if (e.getOtherBody() instanceof Player) {
+            star1.setHealth(0);
             collision();
         }
     }
 
     public void collision () {
-        star1.decreaseStarHealth();
-        star1.star1Death();
         star1.setLinearVelocity(new Vec2(0,0));
         star1.setPosition(new Vec2(-8,9));
+        star1.star1Death();
     }
 }
