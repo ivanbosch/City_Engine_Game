@@ -28,4 +28,8 @@ public class Star2 extends DynamicBody {
             game.goNextLevel(3);
         }
     }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }
