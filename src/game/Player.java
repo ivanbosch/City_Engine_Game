@@ -85,7 +85,6 @@ public class Player extends DynamicBody implements IdleImageInterface {
      * <p>
      *     The idle animation is changed with a timer and rotates from one picture to another to add a more pleasing aesthetic.
      * </p>
-     * @return A different image every second for the player
      */
     public void startIdleImage() {
         this.idleImageTask = new IdleImageTask(this);
@@ -115,7 +114,6 @@ public class Player extends DynamicBody implements IdleImageInterface {
      * <p>
      *     Decreasing the player health its usually called when the player suffers a collision against another body.
      * </p>
-     * @retuns health - 1
      */
     public void decreaseHealth () {
         health--;
@@ -148,7 +146,6 @@ public class Player extends DynamicBody implements IdleImageInterface {
 
     /**
      * Player kills + 1
-     * @return kill count + 1
      */
     public void addOne() {
         killCount++;

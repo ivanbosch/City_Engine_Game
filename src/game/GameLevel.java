@@ -43,7 +43,8 @@ public abstract class GameLevel extends World {
      *     This method is used typically by all level classes that extend this class, they are super called
      *     to create the spaceship and they are able to add any other extra bodies that they want for that level.
      *
-     * @return returns a spaceship which is controlled by the player
+     * @param playerHealth int player's amount of health
+     * @param game the game in which the player is in
      */
     public void populate(Game game, int playerHealth) {
         spaceship = new Player(this , playerHealth, game);

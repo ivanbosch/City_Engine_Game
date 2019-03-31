@@ -281,6 +281,7 @@ public class Game {
 
     /**
      * Set boolean type to change the completion of level 2
+     * @param level2WasCompleted boolean that checks if the level was completed
      */
     public void setLevel2WasCompleted(boolean level2WasCompleted) {
         this.level2WasCompleted = level2WasCompleted;
@@ -295,7 +296,8 @@ public class Game {
     }
 
     /**
-     * Set boolean type to change the completion of level 2
+     * Set boolean type to change the completion of level 3
+     * @param level3WasCompleted boolean that checks if level 3 was completed
      */
     public void setLevel3WasCompleted(boolean level3WasCompleted) {
         this.level3WasCompleted = level3WasCompleted;
@@ -310,7 +312,8 @@ public class Game {
     }
 
     /**
-     * Set boolean type to change the completion of level 2
+     * Set boolean type to change the completion of level 4
+     * @param level4WasCompleted boolean that checks if level 4 was completed
      */
     public void setLevel4WasCompleted(boolean level4WasCompleted) {
         this.level4WasCompleted = level4WasCompleted;
@@ -318,7 +321,6 @@ public class Game {
 
     /**
      * Method is used to play the battle music and set the boolean isBattleMusic true if the loading music is playing it will stop it
-     * @return
      */
     public void playBattleMusic() {
         if (isLoadingMusic == true) {
@@ -341,7 +343,6 @@ public class Game {
      * <p>
      *     The first time the game is launched it will play a song and when it comes back from a different level it will play another.
      * </p>
-     * @return void will play music
      */
     public void playInitialMusic(){
         if (isBattleMusic == false) {
@@ -369,7 +370,6 @@ public class Game {
      * <p>
      *     When all levels are completed and there are no stars in the first level this music will be played.
      * </p>
-     * @return void will plat music
      */
     public void playWinningMusic() {
             loadingMusic.stop();
@@ -385,7 +385,7 @@ public class Game {
 
     /**
      * Set boolean for when the specified music is being played can be set to true
-     * @return boolean isBattleMusic either true or false
+     * @param battleMusic boolean that checks if the battle music is on
      */
     public void setBattleMusic(boolean battleMusic) {
         isBattleMusic = battleMusic;
@@ -393,7 +393,7 @@ public class Game {
 
     /**
      * Set boolean for when the specified music is being played can be set to true
-     * @return boolean isLoadingMusic either true or false
+     * @param loadingMusic boolean that checks if the loading music is on
      */
     public void setLoadingMusic(boolean loadingMusic) {
         isLoadingMusic = loadingMusic;
@@ -401,7 +401,7 @@ public class Game {
 
     /**
      * Set boolean for when the specified music is being played can be set to true
-     * @return boolean isWinMusic either true or false
+     * @param winMusic boolean that checks if win music is on
      */
     public void setWinMusic (boolean winMusic) {
         isWinMusic = winMusic;
@@ -423,7 +423,9 @@ public class Game {
         return data;
     }
 
-    /** Run the game. */
+    /** Run the game.
+     * @param args args
+     * */
     //Execution of the game
     public static void main(String[] args) {
 
