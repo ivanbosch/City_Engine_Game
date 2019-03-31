@@ -1,2 +1,5 @@
 
 user   1   0   false  false  false
+user   1   0   false  false  false
+user   1   300   true  false  false
+user	1	300	true	false	false

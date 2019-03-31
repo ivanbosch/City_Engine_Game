@@ -240,6 +240,10 @@ public class Game {
         return world;
     }
 
+    public void setWorld(GameLevel world) {
+        this.world = world;
+    }
+
     /**
      * setLevel to a particular int
      * @param i set level to int i

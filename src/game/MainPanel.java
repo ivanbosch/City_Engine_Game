@@ -77,10 +77,9 @@ public class MainPanel extends Container {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                System.out.println("algo");
                 try {
-                    if (game.getWorld().loadFile("data/save.txt") == 1) {
-                        game.goLevel1();
-                    }
+                    game.getWorld().loadFile("data/save.txt", game);
                 }
                 catch (GameLoadException ex){
                     errorMessage.setText(ex.getReason());
