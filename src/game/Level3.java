@@ -15,7 +15,7 @@ public class Level3 extends GameLevel {
 
         game.playBattleMusic();
 
-        //make enemies
+        //make more enemies with more health
         for (int i = 1; i <6; i++) {
             Enemy enemy = new Enemy(this, 3);
             enemy.setPosition(new Vec2(-8+(3*i), 4+(i*2)));
@@ -24,6 +24,7 @@ public class Level3 extends GameLevel {
             enemy.addCollisionListener(new EnemiesCollision(enemy, game));
             enemies.add(enemy);
         }
+        //link step listener to this enemies
         this.addStepListener(new MovementListener(this,enemies,getPlayer()));
     }
 

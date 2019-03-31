@@ -23,6 +23,7 @@ public class MovementListener implements StepListener {
     }
 
     @Override
+    //enemies move side to side in the world and and shoot according to their proximity to the player's spaceship on the x axis
     public void postStep (StepEvent e) {
         for (Enemy enemy : enemies) {
             if (enemy.getPosition().x > 11) {

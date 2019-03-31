@@ -3,31 +3,88 @@ package game;
 import city.cs.engine.*;
 import org.jbox2d.common.Vec2;
 
-import javax.sound.sampled.Control;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+/**
+ * @author Ivan, Bosch, ivan.bosch@city.ac.uk
+ * @version 28
+ * @since 1
+ */
 public class Game {
 
+    //DECLARATIONS OF ALL THE DIFFERENT DATA USED
+    /**
+     * Declaring a world
+     */
     private GameLevel world;
+    /**
+     * Declaring a view
+     */
     private UserView view;
+    /**
+     * Declaring level which will change according to the level in which the player is
+     */
     private int level;
+    /**
+     * boolean is this level completed
+     */
     private boolean level2WasCompleted;
+    /**
+     * boolean is this level completed
+     */
     private boolean level3WasCompleted;
+    /**
+     * boolean is this level completed
+     */
     private boolean level4WasCompleted;
+    /**
+     * A keyboardInput object so that the player is able to move
+     */
     private KeyboardInput keyboardInput;
+    /**
+     * Declaring a music for battle scenes
+     */
     private SoundClip battleMusic;
+    /**
+     * Declaring a start of the game music
+     */
     private SoundClip gameMusic;
+    /**
+     * Declaring a loading music
+     */
     private SoundClip loadingMusic;
+    /**
+     * Declaring a end game music
+     */
     private SoundClip winMusic;
+    /**
+     * Boolean is battle music being played
+     */
     private boolean isBattleMusic;
+    /**
+     * Boolean is win music being played
+     */
     private boolean isWinMusic;
+    /**
+     * Boolean is loading music being played
+     */
     private boolean isLoadingMusic;
+    /**
+     * A PlayerData class object in which the player data is stored
+     */
     private PlayerData data;
 
+    /**
+     * Starting state of the game
+     * <p>
+     *     How the game starts, the world, frame and view are initialized, the player keyboard inputs are linked into
+     *     the frame and also the mainPanel buttons are as well. The world gravity is set to 0 since the game happens in space.
+     * </p>
+     */
     public Game() {
         // make the world
 
@@ -72,6 +129,14 @@ public class Game {
         world.start();
     }
 
+    /**
+     * Proceed to next level
+     * <p>
+     *     Player goes to next level the level is populated here and the level is set.
+     * </p>
+     * @param i the level that the player proceeds to
+     */
+    // go to next level if the requirement are met in each different level
     public void goNextLevel(int i) {
         world.stop();
 
@@ -102,6 +167,15 @@ public class Game {
         }
     }
 
+    /**
+     * Go back to the level selector (level 1).
+     *<p>
+     *     This method will return you to the first level from levels 2, 3 and 4. If the player health is 0 it will reset
+     *     the score and the level will not be set as completed meaning its going to appear in level 1. Else if player health is above 0
+     *     it will keep health as it is and set the level as completed and transfer all the points to total score.
+     *</p>
+     */
+    //Go back to level 1 in case of death or level completion
     public void goLevel1() {
 
         if(data.getHealth() > 0) {
@@ -133,6 +207,14 @@ public class Game {
 
     }
 
+    /**
+     * Go back to level 1
+     * <p>
+     *     This method is usually used to restart a player progression on the level it will allow the user to go back to level 1
+     *     by clicking on a button.
+     * </p>
+     */
+    //Go back to level 1 if the player wants to
     public void restart() {
         if (level != 1) {
             data.setHealth(3);
@@ -149,18 +231,34 @@ public class Game {
         }
     }
 
+    /**
+     * Return GameLevel type object world
+     * @return world
+     */
+    //ALL SETTERS AND GETTERS USED TO MANAGE DIFFERENT DATA FROM HERE ONWARDS AND SOME BOOLEANS
     public GameLevel getWorld() {
         return world;
     }
 
+    /**
+     * setLevel to a particular int
+     * @param i set level to int i
+     */
     public void setLevel(int i) {
         level = i;
     }
 
+    /**
+     * Get int type level
+     * @return level
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * Level population usually used when populating a new world in order to avoid code duplication
+     */
     public void levelPopulation() {
         world.populate(this, data.getHealth());
 
@@ -173,30 +271,55 @@ public class Game {
         world.start();
     }
 
+    /**
+     * Get boolean type was level 2 completed
+     * @return boolean to know the state of completion of a level
+     */
     public boolean getLevel2WasCompleted() {
         return level2WasCompleted;
     }
 
+    /**
+     * Set boolean type to change the completion of level 2
+     */
     public void setLevel2WasCompleted(boolean level2WasCompleted) {
         this.level2WasCompleted = level2WasCompleted;
     }
 
+    /**
+     * Get boolean type was level 2 completed
+     * @return boolean to know the state of completion of a level
+     */
     public boolean getLevel3WasCompleted() {
         return level3WasCompleted;
     }
 
+    /**
+     * Set boolean type to change the completion of level 2
+     */
     public void setLevel3WasCompleted(boolean level3WasCompleted) {
         this.level3WasCompleted = level3WasCompleted;
     }
 
+    /**
+     * Get boolean type was level 2 completed
+     * @return boolean to know the state of completion of a level
+     */
     public boolean getLevel4WasCompleted() {
         return level4WasCompleted;
     }
 
+    /**
+     * Set boolean type to change the completion of level 2
+     */
     public void setLevel4WasCompleted(boolean level4WasCompleted) {
         this.level4WasCompleted = level4WasCompleted;
     }
 
+    /**
+     * Method is used to play the battle music and set the boolean isBattleMusic true if the loading music is playing it will stop it
+     * @return
+     */
     public void playBattleMusic() {
         if (isLoadingMusic == true) {
             loadingMusic.stop();
@@ -213,6 +336,13 @@ public class Game {
 
     }
 
+    /**
+     * Method is used to play the music at the first level.
+     * <p>
+     *     The first time the game is launched it will play a song and when it comes back from a different level it will play another.
+     * </p>
+     * @return void will play music
+     */
     public void playInitialMusic(){
         if (isBattleMusic == false) {
             try {
@@ -234,6 +364,13 @@ public class Game {
         }
     }
 
+    /**
+     * Method is used to play music when all levels are completed
+     * <p>
+     *     When all levels are completed and there are no stars in the first level this music will be played.
+     * </p>
+     * @return void will plat music
+     */
     public void playWinningMusic() {
             loadingMusic.stop();
             setWinMusic(true);
@@ -246,27 +383,48 @@ public class Game {
             }
     }
 
+    /**
+     * Set boolean for when the specified music is being played can be set to true
+     * @return boolean isBattleMusic either true or false
+     */
     public void setBattleMusic(boolean battleMusic) {
         isBattleMusic = battleMusic;
     }
 
+    /**
+     * Set boolean for when the specified music is being played can be set to true
+     * @return boolean isLoadingMusic either true or false
+     */
     public void setLoadingMusic(boolean loadingMusic) {
         isLoadingMusic = loadingMusic;
     }
 
+    /**
+     * Set boolean for when the specified music is being played can be set to true
+     * @return boolean isWinMusic either true or false
+     */
     public void setWinMusic (boolean winMusic) {
         isWinMusic = winMusic;
     }
 
+    /**
+     * Getter to check id the win music is being played
+     * @return isWinMusic boolean either true or false
+     */
     public boolean isWinMusic() {
         return isWinMusic;
     }
 
+    /**
+     * Getter for the PlayerData type data so that the different information stored can be moved from level to level and modified.
+     * @return player data such as health or score
+     */
     public PlayerData getData() {
         return data;
     }
 
     /** Run the game. */
+    //Execution of the game
     public static void main(String[] args) {
 
         new Game();

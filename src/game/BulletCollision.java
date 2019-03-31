@@ -6,6 +6,7 @@ import city.cs.engine.CollisionListener;
 public class BulletCollision implements CollisionListener {
 
     @Override
+    //bullet is destroyed on collisions
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Bullet) {
             e.getOtherBody().destroy();

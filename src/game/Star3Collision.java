@@ -12,6 +12,7 @@ public class Star3Collision implements CollisionListener {
     }
 
     @Override
+    //Collision against player and player's bullets
     public void collide (CollisionEvent e) {
         if (e.getOtherBody() instanceof Bullet) {
             star3.decreaseStarHealth();
@@ -22,8 +23,6 @@ public class Star3Collision implements CollisionListener {
             collision();
         }
     }
-
-    //When a star dies a different level starts
 
     public void collision () {
         star3.star3Death();

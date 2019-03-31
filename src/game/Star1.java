@@ -10,6 +10,7 @@ public class Star1 extends DynamicBody {
     private static final BodyImage starImage = new BodyImage("data/stars/star_blue01.png", 9);
     private Game game;
 
+    //Star object when it's destroy it initialises a different level, acts as level selector
     public Star1(World world, int health, int x, int y, Game game) {
         super(world, circleShape);
         this.addImage(starImage);
@@ -22,6 +23,7 @@ public class Star1 extends DynamicBody {
         health--;
     }
 
+    //When the object is destroy starts new level
     public void star1Death() {
         if (health == 0) {
             this.destroy();

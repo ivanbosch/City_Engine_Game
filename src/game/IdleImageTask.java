@@ -6,6 +6,7 @@ import java.util.TimerTask;
 
 public class IdleImageTask extends TimerTask {
 
+    //initialisation of images
     private static final BodyImage image1 = new BodyImage("data/Spaceship_Assets/Spaceship1.png",2);
     private static final BodyImage image2 = new BodyImage("data/Spaceship_Assets/Spaceship2.png",2);
     private Player player;
@@ -16,6 +17,7 @@ public class IdleImageTask extends TimerTask {
         this.player = player;
     }
 
+    //on every timer tick change the image from one to another
     public void run() {
         if (this.isImage1) {
             this.setImage(image1);
@@ -26,6 +28,7 @@ public class IdleImageTask extends TimerTask {
         }
     }
 
+    //image setter
     private void setImage(BodyImage image) {
         player.removeAllImages();
         player.addImage(image);

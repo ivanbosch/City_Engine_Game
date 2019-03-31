@@ -15,7 +15,7 @@ public class Level4 extends GameLevel {
 
         game.playBattleMusic();
 
-        //make enemies
+        //make the most enemies with most health
         for (int i = 1; i <8; i++) {
             Enemy enemy = new Enemy(this, 5);
             enemy.setPosition(new Vec2(-8+(i*2), 2+(i*2)));
@@ -24,6 +24,7 @@ public class Level4 extends GameLevel {
             enemy.addCollisionListener(new EnemiesCollision(enemy, game));
             enemies.add(enemy);
         }
+        //link step listener to this enemies
         this.addStepListener(new MovementListener(this,enemies,getPlayer()));
     }
 

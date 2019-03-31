@@ -13,6 +13,7 @@ public class EnemiesCollision implements CollisionListener {
         this.game = game;
     }
 
+    //enemy collision management against the Player and its bullets
     @Override
     public void collide(CollisionEvent e) {
         if (e.getOtherBody() instanceof Player) {
@@ -21,6 +22,7 @@ public class EnemiesCollision implements CollisionListener {
             enemy.decreaseHealth();
             enemy.setLinearVelocity(new Vec2(enemy.getWalkingSpeed(), 0));
 
+            //when an enemy health is 0 destroy it and take it out of the enemies list
             if (enemy.getHealth() == 0) {
                 enemy.destroy();
                 game.getWorld().getPlayer().addOne();

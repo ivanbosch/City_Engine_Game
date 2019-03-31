@@ -11,6 +11,7 @@ public class Enemy extends Walker {
 
     private static float WALKING_SPEED = -5;
 
+    //enemy characteristics
     public Enemy(World world, int health){
         super(world, enemyShape);
         addImage(enemyImage);
@@ -19,6 +20,7 @@ public class Enemy extends Walker {
     }
 
 
+    //enemy moving speed
     public static float getWalkingSpeed() {
         return WALKING_SPEED;
     }
@@ -27,6 +29,7 @@ public class Enemy extends Walker {
         WALKING_SPEED = walkingSpeed;
     }
 
+    //enemy health goes down on collisions
     public void decreaseHealth() {
         health--;
         this.setLinearVelocity(new Vec2(WALKING_SPEED,0));

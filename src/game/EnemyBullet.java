@@ -12,6 +12,7 @@ public class EnemyBullet extends DynamicBody {
     private static final BodyImage bulletImage = new BodyImage("data/stars/star_orange01.png");
     private static SoundClip enemyShoot;
 
+    //Enemy shooting sound is loaded once since its more efficient this way
     static {
         try {
             enemyShoot = new SoundClip("data/SpaceMusicPack/fx/enemyShoot.wav");
@@ -21,6 +22,7 @@ public class EnemyBullet extends DynamicBody {
         }
     }
 
+    //enemy bullet characteristics
     public EnemyBullet (World world, Enemy enemy) {
         super(world, bulletShape);
         addImage(bulletImage);

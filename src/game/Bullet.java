@@ -7,7 +7,7 @@ public class Bullet extends DynamicBody {
     private static final Shape bulletShape = new CircleShape(0.5f);
     private static final BodyImage bulletImage = new BodyImage("data/stars/star_yellow01.png",1);
 
-    //Player bullet
+    //Player bullet characteristics
     public Bullet (World world) {
         super(world, bulletShape);
         addImage(bulletImage);

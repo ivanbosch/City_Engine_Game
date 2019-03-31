@@ -12,6 +12,7 @@ public class Star1Collision implements CollisionListener {
     }
 
     @Override
+    //Collision against player and player's bullets
     public void collide (CollisionEvent e) {
         if (e.getOtherBody() instanceof Bullet) {
             star1.decreaseStarHealth();

@@ -5,6 +5,7 @@ public class PlayerData {
     private int score;
     private int health;
 
+    //Data object to manage Player health and score around the game
     public PlayerData (Player player) {
         this.player = player;
     }

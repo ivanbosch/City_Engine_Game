@@ -19,6 +19,7 @@ public class KeyboardInput extends KeyAdapter {
         this.player = player;
     }
 
+    //shooting music is only loaded once
     static {
         try {
             playerShoot = new SoundClip("data/SpaceMusicPack/fx/playerShoot.wav");
@@ -29,6 +30,7 @@ public class KeyboardInput extends KeyAdapter {
     }
 
     @Override
+    //Key presses to walk and move the player
     public void keyPressed(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_W) {
@@ -42,6 +44,7 @@ public class KeyboardInput extends KeyAdapter {
         }
     }
 
+    //method for when the body moves changes the images and speed of the body
     private void moveBody(float speedX, float speedY) {
         player.stopIdleImage();
         player.setLinearVelocity(new Vec2(speedX, speedY)); // move
@@ -50,6 +53,7 @@ public class KeyboardInput extends KeyAdapter {
     }
 
     @Override
+    //on key releases stop movements on certain axis
     public void keyReleased(KeyEvent e) {
         int code = e.getKeyCode();
         if (code == KeyEvent.VK_D) {
@@ -60,7 +64,7 @@ public class KeyboardInput extends KeyAdapter {
             this.stopBody(player.getLinearVelocity().x,0);
         } else if (code == KeyEvent.VK_S) {
             this.stopBody(player.getLinearVelocity().x,0);
-        } else if (code == KeyEvent.VK_M && player.getHealth() != 0) {
+        } else if (code == KeyEvent.VK_M && player.getHealth() != 0) { //shoot on key release so it can be hold and its not game breaking
             Bullet bullet = new Bullet(player.getWorld());
             playerShoot.play();
             playerShoot.setVolume(0.2);
