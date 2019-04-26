@@ -77,7 +77,6 @@ public class MainPanel extends Container {
         loadButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("algo");
                 try {
                     game.getWorld().loadFile("data/save.txt", game);
                 }
