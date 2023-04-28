@@ -3,7 +3,6 @@ First year university project made with City Engine an modified version of Box2D
 
 # The Game
 1. Move with WASD and Shoot with M
-2. You start the game in the level selection hub, shoot down a star to select the the level, on completion you are brought back to the hub.
 
 # Running it
 1.  Install JDK https://www.oracle.com/java/technologies/downloads/
