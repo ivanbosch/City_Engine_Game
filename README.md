@@ -11,5 +11,4 @@ First year university project made with City Engine an modified version of Box2D
 4.  Clone the repository
 5.  Extract the file to desired location
 6.  On VSC go to >File >Open Folder >Select the repository
-7.  Open any java file contained in the src folder
-8.  Build the project and it will use the CityEngine.jar thanks to the .vscode folder
+7.  Build the project and it will use the CityEngine.jar thanks to the .vscode folder
